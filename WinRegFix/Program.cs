@@ -33,7 +33,7 @@ namespace WinRegFix
                 //如果是管理员，则直接运行
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new FixMain());
             }
             else
             {
@@ -42,9 +42,9 @@ namespace WinRegFix
                     //创建启动对象
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                     //设置运行文件
-                    startInfo.FileName = "RepairMdReg.exe";
+                    startInfo.FileName = "WinRegFix.exe";
                     //设置启动参数
-                    startInfo.Arguments = "mdreg";
+                    //startInfo.Arguments = "mdreg";
                     //设置启动动作,确保以管理员身份运行
                     startInfo.Verb = "runas";
                     //如果不是管理员，则启动UAC
@@ -52,6 +52,7 @@ namespace WinRegFix
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show(e.Message);
                 }
                 finally
                 {
